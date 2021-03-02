@@ -1,0 +1,13 @@
+databases[postgresql]
+fastapi
+fastapi-utils
+psycopg2-binary
+pytest
+requests
+uvicorn
+orjson
+sqlalchemy_utils
+python-jose
+passlib
+python-multipart
+email-validator
