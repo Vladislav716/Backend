@@ -8,7 +8,7 @@ class Settings(BaseSettings):
     SECRET_KEY: str = secrets.token_urlsafe(32)
     # 60 minutes * 24 hours * 8 days = 8 days
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24 * 8
-    DATABASE_URL: str = "postgresql://postgres:password@localhost:5432/TestDB"
+    DATABASE_URL: str = "postgresql://postgres:qwe123qwe@localhost:5432/testDB"
     FIRST_SUPERUSER_ID: str = "234cdf6d-bf79-44e9-9617-efd0d11e870e"
     FIRST_SUPERUSER: str = "SuperUser"
     FRIST_SUPERUER_EMAIL: str = "superuser@email.com"
@@ -29,7 +29,23 @@ class Settings(BaseSettings):
     SMTP_PASSWORD = ''
     EMAIL_RESET_TOKEN_EXPIRE_HOURS = 1
     EMAILS_ENABLED = SMTP_HOST and SMTP_PORT and EMAILS_FROM_EMAIL
+    GOOGLE = "google-oidc"
+    AZURE = "azure-oidc"
 
+    GOOGLE_CLIENT_ID = "199230757330-q8rkbiijlpc7mg9u4n23usd8lbqgg1if.apps.googleusercontent.com"
+    GOOGLE_CLIENT_SECRET = "Ob6IyfcX29qkQmoptfL6c1bo"
+    GOOGLE_DISCOVERY_URL = "https://accounts.google.com/.well-known/openid-configuration"
+    GOOGLE_REDIRECT_URL = "http://localhost:8000/google-login-callback/"
+
+    # Azure login
+    AZURE_CLIENT_ID = "aa0eaf54-8820-4126-a16f-a340f327bc43"
+    AZURE_CLIENT_SECRET = "0948a3d3-62eb-4447-967b-3690b4be723d"
+    AZURE_TENANT_ID = "f8cdef31-a31e-4b4a-93e4-5f571e91255a"
+    AZURE_AUTHORITY = f"https://login.microsoftonline.com/common"
+    AZURE_DISCOVERY_URL = "https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration"
+    AZURE_REDIRECT_URL = "http://localhost:8000/azure-login-callback/"
+
+    FRONTEND_URL = "http://localhost:8080"
 
     @validator("BACKEND_CORS_ORIGINS", pre=True)
     def assemble_cors_origins(cls, v: Union[str, List[str]]) -> Union[List[str], str]:
